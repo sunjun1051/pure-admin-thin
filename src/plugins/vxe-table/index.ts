@@ -1,11 +1,11 @@
-import "xe-utils";
-import "./index.scss";
-import XEUtils from "xe-utils";
-import { App, unref } from "vue";
-import { i18n } from "/@/plugins/i18n";
-import "font-awesome/css/font-awesome.min.css";
-import zh from "vxe-table/lib/locale/lang/zh-CN";
-import en from "vxe-table/lib/locale/lang/en-US";
+import 'xe-utils'
+import './index.scss'
+import XEUtils from 'xe-utils'
+import { App, unref } from 'vue'
+import { i18n } from '/@/plugins/i18n'
+import 'font-awesome/css/font-awesome.min.css'
+import zh from 'vxe-table/lib/locale/lang/zh-CN'
+import en from 'vxe-table/lib/locale/lang/en-US'
 
 import {
   // 核心
@@ -45,11 +45,11 @@ import {
   Pulldown,
   // 表格
   Table
-} from "vxe-table";
+} from 'vxe-table'
 
 // 全局默认参数
 VXETable.setup({
-  size: "medium",
+  size: 'medium',
   version: 0,
   zIndex: 1002,
   table: {
@@ -62,18 +62,18 @@ VXETable.setup({
     clearable: true
   },
   i18n: (key, args) => {
-    return unref(i18n.global.locale) === "zh"
+    return unref(i18n.global.locale) === 'zh'
       ? XEUtils.toFormatString(XEUtils.get(zh, key), args)
-      : XEUtils.toFormatString(XEUtils.get(en, key), args);
+      : XEUtils.toFormatString(XEUtils.get(en, key), args)
   },
   translate(key) {
-    const NAMESPACED = ["el.", "buttons."];
+    const NAMESPACED = ['el.', 'buttons.']
     if (key && NAMESPACED.findIndex(v => key.includes(v)) !== -1) {
-      return i18n.global.t.call(i18n.global.locale, key);
+      return i18n.global.t.call(i18n.global.locale, key)
     }
-    return key;
+    return key
   }
-});
+})
 
 export function useTable(app: App) {
   app
@@ -110,5 +110,5 @@ export function useTable(app: App) {
     .use(List)
     .use(Pulldown)
     // 安装表格
-    .use(Table);
+    .use(Table)
 }
